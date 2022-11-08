@@ -1,0 +1,39 @@
+BidTraceV1:
+  type: object
+  properties:
+    slot:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    parent_hash:
+      $ref: "../beacon-apis/types/primitive.yaml#/Root"
+    block_hash:
+      $ref: "../beacon-apis/types/primitive.yaml#/Root"
+    builder_pubkey:
+      $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
+    proposer_fee_recipient:
+      $ref: "../beacon-apis/types/primitive.yaml#/ExecutionAddress"
+    gas_limit:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    gas_used:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    value:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint256"
+
+BidTraceV2:
+  allOf:
+    - $ref: "./bids.yaml#/BidTraceV1"
+    - type: object
+      properties:
+        block_number:
+          $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+        num_tx:
+          $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+
+BidTraceV2WithTimestamp:
+  allOf:
+    - $ref: "./bids.yaml#/BidTraceV2"
+    - type: object
+      properties:
+        timestamp:
+          $ref: "./misc.yaml#/Int64"
+        timestamp_ms:
+          $ref: "./misc.yaml#/Int64"

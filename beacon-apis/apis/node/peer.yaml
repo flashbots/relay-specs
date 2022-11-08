@@ -1,0 +1,43 @@
+get:
+  operationId: getPeer
+  tags:
+    - Node
+  summary: Get peer
+  description: Retrieves data about the given peer
+  parameters:
+    - name: peer_id
+      in: path
+      required: true
+      schema:
+        $ref: "../../beacon-node-oapi.yaml#/components/schemas/PeerId"
+  responses:
+    "200":
+      description: Request successful
+      content:
+        application/json:
+          schema:
+            title: GetPeerResponse
+            type: object
+            properties:
+              data:
+                $ref: '../../beacon-node-oapi.yaml#/components/schemas/Peer'
+    "400":
+      description: "The peer ID supplied could not be parsed"
+      content:
+        application/json:
+          schema:
+            $ref: "../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
+            example:
+              code: 400
+              message: "Invalid peer ID: localhost"
+    "404":
+      description: "Peer not found"
+      content:
+        application/json:
+          schema:
+            $ref: "../../beacon-node-oapi.yaml#/components/schemas/ErrorMessage"
+            example:
+              code: 404
+              message: "Peer not found"
+    "500":
+      $ref: '../../beacon-node-oapi.yaml#/components/responses/InternalError'

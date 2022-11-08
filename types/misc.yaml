@@ -1,0 +1,10 @@
+Int64:
+  type: string
+  example: "1"
+
+OrderBy:
+  description: Sort results in this order.
+  type: string
+  enum:
+    - highest_first
+    - lowest_first

@@ -1,0 +1,22 @@
+get:
+  operationId: "getValidators"
+  summary: |
+    Get a list of validator registrations for validators scheduled to propose
+    in the current and next epoch.
+  description: |
+    * Used by builders to know when to submit bids for an upcoming proposal.
+    
+    * Returns an array of validator registrations for the current and next epoch.
+    
+    * Each entry includes a slot and the validator with assigned duty.
+    
+    * Slots without a registered validator are omitted.
+  tags:
+    - Builder
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../relay-oapi.yaml#/components/schemas/ValidatorsResponse"

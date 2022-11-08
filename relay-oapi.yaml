@@ -1,0 +1,65 @@
+openapi: "3.0.3"
+
+info:
+  title: Relay API
+  description: |
+    API specification for PBS relays.
+  version: "dev"
+  contact:
+    name: Flashbots GitHub
+    url: https://github.com/flashbots/relay-specs/issues
+  license:
+    name: "CC0-1.0"
+    url: "https://creativecommons.org/publicdomain/zero/1.0/"
+
+servers:
+  - url: "{server_url}"
+    variables:
+      server_url:
+        description: "Relay URL"
+        default: "http://localhost:18550"
+
+tags:
+  - name: Builder
+    description: Set of endpoints to interact with an external block builder.
+  - name: Data
+    description: Set of endpoints to provide data about the relay.
+
+paths:
+  /relay/v1/builder/validators:
+    $ref: "./apis/relay/builder/validators.yaml"
+  /relay/v1/builder/blocks:
+    $ref: "./apis/relay/builder/blocks.yaml"
+  /relay/v1/data/bidtraces/proposer_payload_delivered:
+    $ref: "./apis/relay/data/proposer_payload_delivered.yaml"
+  /relay/v1/data/bidtraces/builder_blocks_received:
+    $ref: "./apis/relay/data/builder_blocks_received.yaml"
+  /relay/v1/data/validator_registration:
+    $ref: "./apis/relay/data/validator_registration.yaml"
+
+components:
+  schemas:
+    Uint64:
+      $ref: "./beacon-apis/types/primitive.yaml#/Uint64"
+    Root:
+      $ref: "./beacon-apis/types/primitive.yaml#/Root"
+    Pubkey:
+      $ref: "./beacon-apis/types/primitive.yaml#/Pubkey"
+    ErrorMessage:
+      $ref: "./beacon-apis/types/http.yaml#/ErrorMessage"
+    OrderBy:
+      $ref: "./types/misc.yaml#/OrderBy"
+    SubmitBlockRequest:
+      $ref: "./types/requests.yaml#/SubmitBlockRequest"
+    ValidatorsResponse:
+      $ref: "./types/responses.yaml#/ValidatorsResponse"
+    SubmitBlockResponse:
+      $ref: "./types/responses.yaml#/SubmitBlockResponse"
+    DeliveredPayloadsResponse:
+      $ref: "./types/responses.yaml#/DeliveredPayloadsResponse"
+    ReceivedBlocksResponse:
+      $ref: "./types/responses.yaml#/ReceivedBlocksResponse"
+
+  responses:
+    InternalError:
+      $ref: "./types/http.yaml#/InternalError"

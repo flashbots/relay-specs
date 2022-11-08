@@ -1,0 +1,53 @@
+get:
+  operationId: "getReceivedBids"
+  summary: Get builder bid submissions.
+  description: |
+    * Returns a list of builder bids without execution payloads.
+    
+    * Only submissions that were successfully verified.
+  tags:
+    - Data
+  parameters:
+    - name: slot
+      in: query
+      required: false
+      description: A specific slot.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: block_hash
+      in: query
+      required: false
+      description: A specific block hash.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Root"
+    - name: block_number
+      in: query
+      required: false
+      description: A specific block number.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: limit
+      in: query
+      required: false
+      description: The number of results.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../relay-oapi.yaml#/components/schemas/ReceivedBlocksResponse"
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "cannot specify both slot and cursor"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"

@@ -1,0 +1,35 @@
+get:
+  operationId: "getValidatorRegistration"
+  summary: Check that a validator is registered with the relay.
+  description: |
+    * Returns the latest validator registration for a given pubkey.
+    
+    * Useful to check whether your own registration was successful.
+  tags:
+    - Data
+  parameters:
+    - name: pubkey
+      in: query
+      required: true
+      description: The validator's public key.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../beacon-apis/types/registration.yaml#/SignedValidatorRegistration"
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "missing pubkey argument"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"

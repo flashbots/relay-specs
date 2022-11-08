@@ -1,0 +1,148 @@
+InvalidRequest:
+  description: "Invalid request syntax."
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            description: "Either specific error code in case of invalid request or http status code"
+            type: number
+            example: 400
+          message:
+            description: "Message describing error"
+            type: string
+          stacktraces:
+            description: "Optional stacktraces, sent when node is in debug mode"
+            type: array
+            items:
+              type: string
+InternalError:
+  description: "Beacon node internal error."
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            description: "Either specific error code in case of invalid request or http status code"
+            type: number
+            example: 404
+          message:
+            description: "Message describing error"
+            type: string
+          stacktraces:
+            description: "Optional stacktraces, sent when node is in debug mode"
+            type: array
+            items:
+              type: string
+      example:
+        code: 500
+        message: "Internal server error"
+CurrentlySyncing:
+  description: "Beacon node is currently syncing, try again later."
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            description: "Either specific error code in case of invalid request or http status code"
+            type: number
+            example: 404
+          message:
+            description: "Message describing error"
+            type: string
+          stacktraces:
+            description: "Optional stacktraces, sent when node is in debug mode"
+            type: array
+            items:
+              type: string
+      example:
+        code: 503
+        message: "Beacon node is currently syncing and not serving request on that endpoint"
+NotFound:
+  description: "Not found"
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            description: "Either specific error code in case of invalid request or http status code"
+            type: number
+            example: 404
+          message:
+            description: "Message describing error"
+            type: string
+          stacktraces:
+            description: "Optional stacktraces, sent when node is in debug mode"
+            type: array
+            items:
+              type: string
+      example:
+        code: 404
+        message: "Requested item not found"
+UnsupportedMediaType:
+  description: "The supplied content-type is not supported."
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            description: "The media type supplied is unsupported, and the request has been rejected. This occurs when a HTTP request supplies a payload in a content-type that the service is not able to accept."
+            type: number
+            example: 415
+          message:
+            description: "Message describing error"
+            type: string
+          stacktraces:
+            description: "Optional stacktraces, sent when node is in debug mode"
+            type: array
+            items:
+              type: string
+      example:
+        code: 415
+        message: "Cannot read the supplied content type."
+ErrorMessage:
+  type: object
+  properties:
+    code:
+      description: "Either specific error code in case of invalid request or http status code"
+      type: number
+      example: 404
+    message:
+      description: "Message describing error"
+      type: string
+    stacktraces:
+      description: "Optional stacktraces, sent when node is in debug mode"
+      type: array
+      items:
+        type: string
+IndexedErrorMessage:
+  type: object
+  properties:
+    code:
+      description: "Either specific error code in case of invalid request or http status code"
+      type: number
+      example: 400
+    message:
+      description: "Message describing error"
+      type: string
+      example: "some failures"
+    failures:
+      description: "List of individual items that have failed"
+      type: array
+      items:
+        type: object
+        properties:
+          index:
+            description: "Index of item in the request list that caused the error"
+            type: number
+            example: 3
+          message:
+            description: "Message describing error"
+            type: string
+            example: "invalid signature"
+

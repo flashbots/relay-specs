@@ -1,0 +1,45 @@
+post:
+  operationId: "submitBlock"
+  summary: Submit a new block to the relay.
+  description: |
+    * Blocks can be submitted as plain JSON or be gzip encoded.
+    
+    * The relay will simulate the block to verify properties and proposer
+      payment in the payment transaction from builder to proposer
+      `fee_recipient` at the end of block.
+    
+    * For accountability, builder signature is over the SSZ encoded `message`.
+    
+    * The `message`, which does not include the transactions, will be made
+      public via the data API, allowing anyone to verify the builder signature.
+    
+    * Any new submission by a builder will overwrite a previous one by the same
+      `builder_pubkey`, even if it is less profitable.
+  tags:
+    - Builder
+  requestBody:
+    description: A signed bid with an execution payload.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockRequest"
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockResponse"
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "payload for this slot was already delivered"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"

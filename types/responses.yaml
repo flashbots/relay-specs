@@ -1,0 +1,38 @@
+ValidatorsResponseEntry:
+  type: object
+  properties:
+    slot:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    entry:
+      $ref: "../beacon-apis/types/registration.yaml#/ValidatorRegistration"
+
+ValidatorsResponse:
+  type: array
+  items:
+    $ref: "./responses.yaml#/ValidatorsResponseEntry"
+
+DeliveredPayloadsResponse:
+  type: array
+  items:
+    $ref: "./bids.yaml#/BidTraceV2"
+
+ReceivedBlocksResponse:
+  type: array
+  items:
+    $ref: "./bids.yaml#/BidTraceV2WithTimestamp"
+
+SubmitBlockResponseMessage:
+  type: object
+  properties:
+    receive_timestamp:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    bid_trace:
+      $ref: "./bids.yaml#/BidTraceV1"
+
+SubmitBlockResponse:
+  type: object
+  properties:
+    message:
+      $ref: "./responses.yaml#/SubmitBlockResponseMessage"
+    signature:
+      $ref: "../beacon-apis/types/primitive.yaml#/Signature"
