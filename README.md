@@ -2,10 +2,15 @@
 
 ![CI][ci]
 
-The Relay API defines the interface for builders to interact with relays. For
-interacting with validators, relays follow the [builder-specs][builder-specs].
+The Relay API consists of two categories of APIs:
 
-View the Relay API Specification here:
+* Builder API for builders to submit blocks.
+* Data API for anyone to query information about the relay.
+  * Things like registrations, bids, and payloads.
+
+For interacting with validators, a relay should follow the [builder-specs][builder-specs].
+
+View the Relay API specifications here:
 * https://flashbots.github.io/relay-specs/
 
 ## Contributing
