@@ -383,11 +383,14 @@ paths:
           required: false
           description: Sort results in order of...
           schema:
-            description: Sort results in this order.
+            description: |
+              Sort results in either ascending or descending values.
+               * `-value` - descending value (highest value first)
+               * `value` - ascending value (lowest value first)
             type: string
             enum:
-              - highest_first
-              - lowest_first
+              - '-value'
+              - value
       responses:
         '200':
           description: Success response.
@@ -770,11 +773,14 @@ components:
           items:
             type: string
     OrderBy:
-      description: Sort results in this order.
+      description: |
+        Sort results in either ascending or descending values.
+         * `-value` - descending value (highest value first)
+         * `value` - ascending value (lowest value first)
       type: string
       enum:
-        - highest_first
-        - lowest_first
+        - '-value'
+        - value
     SubmitBlockRequest:
       type: object
       properties:
