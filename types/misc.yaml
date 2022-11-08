@@ -3,8 +3,9 @@ Int64:
   example: "1"
 
 OrderBy:
-  description: Sort results in this order.
+  description: |
+    Sort results in either ascending or descending values.
+     * `-value` - descending value (highest value first)
+     * `value` - ascending value (lowest value first)
   type: string
-  enum:
-    - highest_first
-    - lowest_first
+  enum: ["-value", "value"]
