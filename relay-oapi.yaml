@@ -2,11 +2,11 @@ openapi: 3.0.3
 info:
   title: Relay API
   description: |
-    API specification for PBS relays.
+    API specification for MEV-Boost PBS relays.
   version: dev
   contact:
-    name: Flashbots GitHub
-    url: 'https://github.com/flashbots/relay-specs/issues'
+    name: GitHub Repository
+    url: 'https://github.com/flashbots/relay-specs'
   license:
     name: CC0-1.0
     url: 'https://creativecommons.org/publicdomain/zero/1.0/'
