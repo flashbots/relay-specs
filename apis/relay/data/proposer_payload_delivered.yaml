@@ -44,6 +44,12 @@ get:
       description: A specific proposer public key.
       schema:
         $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
+    - name: builder_pubkey
+      in: query
+      required: false
+      description: A specific builder public key.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
     - name: order_by
       in: query
       required: false

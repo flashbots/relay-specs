@@ -26,6 +26,12 @@ get:
       description: A specific block number.
       schema:
         $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: builder_pubkey
+      in: query
+      required: false
+      description: A specific builder public key.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
     - name: limit
       in: query
       required: false
