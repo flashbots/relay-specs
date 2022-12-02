@@ -7,3 +7,19 @@ SubmitBlockRequest:
       $ref: "../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayload"
     signature:
       $ref: "../beacon-apis/types/primitive.yaml#/Signature"
+
+GetValidatorRegistrationsRequestEntry:
+  type: object
+  required: [pubkey, fee_recipient]
+  properties:
+    pubkey:
+      $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
+    fee_recipient:
+      $ref: "../beacon-apis/types/primitive.yaml#/ExecutionAddress"
+    gas_limit:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+
+GetValidatorRegistrationsRequest:
+  type: array
+  items:
+    $ref: "./requests.yaml#/GetValidatorRegistrationsRequestEntry"

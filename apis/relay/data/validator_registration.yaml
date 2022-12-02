@@ -1,10 +1,16 @@
 get:
   operationId: "getValidatorRegistration"
-  summary: Check that a validator is registered with the relay.
+  summary: Check if a validator is registered with the relay.
   description: |
-    * Returns the latest validator registration for a given pubkey.
+    * Return `pubkey` if there's a registration with the
+      `pubkey`/`fee_recipient`/`gas_limit` combination.
     
     * Useful to check whether your own registration was successful.
+    
+    * To check if a validator is registered with a relay, you must know the
+      validators public key and its fee recipient. With privacy in mind, it's
+      more difficult for a random person to check if your validator is
+      registered with a particular relay.
   tags:
     - Data
   parameters:
@@ -14,13 +20,70 @@ get:
       description: The validator's public key.
       schema:
         $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
+    - name: fee_recipient
+      in: query
+      required: true
+      description: The fee recipient in the validator's registration.
+      schema:
+        $ref: "../../../beacon-apis/types/primitive.yaml#/ExecutionAddress"
+    - name: gas_limit
+      in: query
+      required: false
+      description: The gas limit in the validator's registration.
+      schema:
+        $ref: "../../../beacon-apis/types/primitive.yaml#/Uint64"
   responses:
     "200":
       description: Success response.
       content:
         application/json:
           schema:
-            $ref: "../../../beacon-apis/types/registration.yaml#/SignedValidatorRegistration"
+            $ref: "../../../relay-oapi.yaml#/components/schemas/GetValidatorRegistrationsResponse"
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "missing pubkey argument"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"
+
+post:
+  operationId: "getValidatorRegistrations"
+  summary: Check if a group of validators is registered with the relay.
+  description: |
+    * Perform a bulk check for validator registrations.
+    
+    * The `missing` query argument alters the behavior of this endpoint. When
+      specified, the relay will only return pubkeys for registrations that it
+      did not find.
+  tags:
+    - Data
+  parameters:
+    - name: missing
+      in: query
+      required: false
+      description: Only return missing pubkeys. No value required.
+      schema:
+        type: string
+  requestBody:
+    description: A list of registrations to check for.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../../relay-oapi.yaml#/components/schemas/GetValidatorRegistrationsRequest"
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../relay-oapi.yaml#/components/schemas/GetValidatorRegistrationsResponse"
     "400":
       description: Error response.
       content:

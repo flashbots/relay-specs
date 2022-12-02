@@ -51,6 +51,8 @@ components:
       $ref: "./types/misc.yaml#/OrderBy"
     SubmitBlockRequest:
       $ref: "./types/requests.yaml#/SubmitBlockRequest"
+    GetValidatorRegistrationsRequest:
+      $ref: "./types/requests.yaml#/GetValidatorRegistrationsRequest"
     ValidatorsResponse:
       $ref: "./types/responses.yaml#/ValidatorsResponse"
     SubmitBlockResponse:
@@ -59,6 +61,8 @@ components:
       $ref: "./types/responses.yaml#/DeliveredPayloadsResponse"
     ReceivedBlocksResponse:
       $ref: "./types/responses.yaml#/ReceivedBlocksResponse"
+    GetValidatorRegistrationsResponse:
+      $ref: "./types/responses.yaml#/GetValidatorRegistrationsResponse"
 
   responses:
     InternalError:

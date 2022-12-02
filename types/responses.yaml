@@ -36,3 +36,8 @@ SubmitBlockResponse:
       $ref: "./responses.yaml#/SubmitBlockResponseMessage"
     signature:
       $ref: "../beacon-apis/types/primitive.yaml#/Signature"
+
+GetValidatorRegistrationsResponse:
+  type: array
+  items:
+    $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
