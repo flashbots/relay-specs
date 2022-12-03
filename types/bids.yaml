@@ -37,3 +37,11 @@ BidTraceV2WithTimestamp:
           $ref: "./misc.yaml#/Int64"
         timestamp_ms:
           $ref: "./misc.yaml#/Int64"
+
+BidTraceV3:
+  allOf:
+    - $ref: "./bids.yaml#/BidTraceV2WithTimestamp"
+    - type: object
+      properties:
+        extra_data:
+          $ref: "../beacon-apis/types/primitive.yaml#/ExtraData"
