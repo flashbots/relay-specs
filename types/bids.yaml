@@ -28,7 +28,7 @@ BidTraceV2:
         num_tx:
           $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
 
-BidTraceV2WithTimestamp:
+BidTraceV3:
   allOf:
     - $ref: "./bids.yaml#/BidTraceV2"
     - type: object
@@ -37,3 +37,5 @@ BidTraceV2WithTimestamp:
           $ref: "./misc.yaml#/Int64"
         timestamp_ms:
           $ref: "./misc.yaml#/Int64"
+        extra_data:
+          $ref: "../beacon-apis/types/primitive.yaml#/ExtraData"
