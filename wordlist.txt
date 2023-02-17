@@ -4,6 +4,7 @@ apis
 bellatrix
 bls
 bn
+capella
 cli
 dev
 eth
