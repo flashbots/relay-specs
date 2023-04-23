@@ -23,7 +23,7 @@ npm install -g @stoplight/spectral-cli@6.2.1
 ```
 and then run it:
 ```console
-spectral lint builder-oapi.yaml
+spectral lint relay-oapi.yaml
 ```
 
 ### Render API Specification

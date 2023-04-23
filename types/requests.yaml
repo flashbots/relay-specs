@@ -4,6 +4,8 @@ SubmitBlockRequest:
     message:
       $ref: "./bids.yaml#/BidTraceV1"
     execution_payload:
-      $ref: "../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayload"
+      oneOf:
+        - $ref: "../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayload"
+        - $ref: "../beacon-apis/types/capella/execution_payload.yaml#/Capella/ExecutionPayload"
     signature:
       $ref: "../beacon-apis/types/primitive.yaml#/Signature"
