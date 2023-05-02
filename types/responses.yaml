@@ -3,6 +3,8 @@ ValidatorsResponseEntry:
   properties:
     slot:
       $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    validator_index:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
     entry:
       $ref: "../beacon-apis/types/registration.yaml#/SignedValidatorRegistration"
 
