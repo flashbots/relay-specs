@@ -51,6 +51,9 @@ paths:
                     slot:
                       type: string
                       example: '1'
+                    validator_index:
+                      type: string
+                      example: '1'
                     entry:
                       type: object
                       description: The `SignedValidatorRegistration` object from the Builder API specification.
@@ -1127,6 +1130,9 @@ components:
         type: object
         properties:
           slot:
+            type: string
+            example: '1'
+          validator_index:
             type: string
             example: '1'
           entry:
