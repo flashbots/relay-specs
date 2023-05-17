@@ -34,6 +34,9 @@ post:
       application/json:
         schema:
           $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockRequest"
+      application/octet-stream:
+        schema:
+          description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
   responses:
     "200":
       description: Success response.
