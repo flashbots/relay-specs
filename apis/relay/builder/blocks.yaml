@@ -2,7 +2,10 @@ post:
   operationId: "submitBlock"
   summary: Submit a new block to the relay.
   description: |
-    * Blocks can be submitted as plain JSON or be gzip encoded.
+    * Blocks can be submitted as JSON or SSZ, and optionally GZIP encoded. To be
+      clear, there are four options: JSON, JSON+GZIP, SSZ, SSZ+GZIP. If JSON, the
+      content type should be `application/json`. If SSZ, the content type should
+      be `application/octet-stream`.
     
     * The relay will simulate the block to verify properties and proposer
       payment in the payment transaction from builder to proposer
@@ -17,6 +20,13 @@ post:
       `builder_pubkey`, even if it is less profitable.
   tags:
     - Builder
+  parameters:
+    - name: cancellations
+      in: query
+      required: false
+      description: If set to 1, opt into bid cancellations.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
   requestBody:
     description: A signed bid with an execution payload.
     required: true
@@ -24,6 +34,9 @@ post:
       application/json:
         schema:
           $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockRequest"
+      application/octet-stream:
+        schema:
+          description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
   responses:
     "200":
       description: Success response.
