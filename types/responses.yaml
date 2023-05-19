@@ -16,12 +16,12 @@ ValidatorsResponse:
 DeliveredPayloadsResponse:
   type: array
   items:
-    $ref: "./bids.yaml#/BidTraceV3"
+    $ref: "./bids.yaml#/BidTraceV2"
 
 ReceivedBlocksResponse:
   type: array
   items:
-    $ref: "./bids.yaml#/BidTraceV3"
+    $ref: "./bids.yaml#/BidTraceV2WithTimestamp"
 
 SubmitBlockResponseMessage:
   type: object
