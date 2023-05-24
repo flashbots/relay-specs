@@ -8,6 +8,7 @@ capella
 cli
 dev
 eth
+gwei
 gzip
 http
 https
