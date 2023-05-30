@@ -7,10 +7,20 @@
 
 - [Introduction](#introduction)
 - [Notation](#notation)
-- [Custom Types](#custom-types)
+- [Custom types](#custom-types)
 - [Constants](#constants)
 - [Containers](#containers)
-
+  - [`​GET /relay​/v1​/builder​/validators` response type](#%E2%80%8Bget-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bvalidators-response-type)
+    - [`ProposerDutiesResponse`](#proposerdutiesresponse)
+    - [`BuilderGetValidatorsResponseEntry`](#buildergetvalidatorsresponseentry)
+    - [`SignedValidatorRegistration`](#signedvalidatorregistration)
+    - [`RegisterValidatorRequestMessage`](#registervalidatorrequestmessage)
+  - [`​POST /relay​/v1​/builder​/blocks` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`BuilderSubmitNewBlockRequest`](#buildersubmitnewblockrequest)
+    - [`SubmitBlockRequest`](#submitblockrequest)
+    - [`BidTrace`](#bidtrace)
+    - [`ExecutionPayload`](#executionpayload)
+    - [`Withdrawal`](#withdrawal)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- /TOC -->
