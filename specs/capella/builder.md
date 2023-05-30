@@ -63,7 +63,7 @@ The following values are (non-configurable) constants used throughout the specif
 
 *Note*: Fields missing in container instantiations default to their zero value.
 
-### GET `​/relay​/v1​/builder​/validators` response type 
+### `​GET /relay​/v1​/builder​/validators` response type 
 
 #### `ProposerDutiesResponse`
 
@@ -89,13 +89,17 @@ class SignedValidatorRegistration(Container):
     signature: BLSSignature
 ```
 
+#### `RegisterValidatorRequestMessage`
 
+```python
+class RegisterValidatorRequestMessage(Container):
+    fee_recipient: ExecutionAddress
+    gas_limit: uint64
+    timestamp: uint64
+    pubkey: BLSPubkey
+```
 
-Slot           uint64                                  `json:"slot,string"`
-	ValidatorIndex uint64                                  `json:"validator_index,string"`
-	Entry          *boostTypes.SignedValidatorRegistration `json:"entry"`
-
-### POST `​/relay​/v1​/builder​/blocks` request type 
+### `​POST /relay​/v1​/builder​/blocks` request type 
 
 #### `BuilderSubmitNewBlockRequest`
 
