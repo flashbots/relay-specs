@@ -1,3 +1,6 @@
 [submodule "beacon-apis"]
 	path = beacon-apis
 	url = https://github.com/ethereum/beacon-APIs.git
+[submodule "builder-specs"]
+	path = builder-specs
+	url = https://github.com/ethereum/builder-specs.git

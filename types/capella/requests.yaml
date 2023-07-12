@@ -1,0 +1,8 @@
+Capella:
+  SubmitBlockRequest:
+    allOf:
+      - $ref: '../bellatrix/requests.yaml#/Bellatrix/SubmitBlockRequestCommon'
+      - type: object
+        properties:
+          execution_payload:
+            $ref: "../../beacon-apis/types/capella/execution_payload.yaml#/Capella/ExecutionPayload"

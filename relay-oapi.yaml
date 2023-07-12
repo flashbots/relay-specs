@@ -49,8 +49,12 @@ components:
       $ref: "./beacon-apis/types/http.yaml#/ErrorMessage"
     OrderBy:
       $ref: "./types/misc.yaml#/OrderBy"
-    SubmitBlockRequest:
-      $ref: "./types/requests.yaml#/SubmitBlockRequest"
+    Bellatrix.SubmitBlockRequest:
+      $ref: "./types/bellatrix/requests.yaml#/Bellatrix/SubmitBlockRequest"
+    Capella.SubmitBlockRequest:
+      $ref: "./types/capella/requests.yaml#/Capella/SubmitBlockRequest"
+    Deneb.SubmitBlockRequest:
+      $ref: "./types/deneb/requests.yaml#/Deneb/SubmitBlockRequest"
     ValidatorsResponse:
       $ref: "./types/responses.yaml#/ValidatorsResponse"
     SubmitBlockResponse:

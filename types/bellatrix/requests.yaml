@@ -1,0 +1,16 @@
+Bellatrix:
+  SubmitBlockRequestCommon:
+    type: object
+    properties:
+      message:
+        $ref: "../bids.yaml#/BidTraceV1"
+      signature:
+        $ref: "../../beacon-apis/types/primitive.yaml#/Signature"
+
+  SubmitBlockRequest:
+    allOf:
+      - $ref: '#/Bellatrix/SubmitBlockRequestCommon'
+      - type: object
+        properties:
+          execution_payload:
+            $ref: "../../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayload"
