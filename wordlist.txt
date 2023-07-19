@@ -31,3 +31,4 @@ validator's
 validators
 vc
 wei
+deneb

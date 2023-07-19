@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        submodules: true
+        submodules: recursive
     - uses: actions/setup-node@v2
     - run: npm i -g @apidevtools/swagger-cli@4 @stoplight/spectral-cli@6.3.0
     - run: spectral --version
