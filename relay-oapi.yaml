@@ -67,3 +67,11 @@ components:
   responses:
     InternalError:
       $ref: "./types/http.yaml#/InternalError"
+
+  examples:
+    Bellatrix.SubmitBlockRequest:
+      $ref: "./examples/bellatrix/submit_block_request.json"
+    Capella.SubmitBlockRequest:
+      $ref: "./examples/capella/submit_block_request.json"
+    Deneb.SubmitBlockRequest:
+      $ref: "./examples/deneb/submit_block_request.json"
