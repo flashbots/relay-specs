@@ -33,7 +33,17 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockRequest"
+          oneOf:
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Bellatrix.SubmitBlockRequest"
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Capella.SubmitBlockRequest"
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Deneb.SubmitBlockRequest"
+        examples:
+          bellatrix:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Bellatrix.SubmitBlockRequest"
+          capella:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Capella.SubmitBlockRequest"
+          deneb:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Deneb.SubmitBlockRequest"
       application/octet-stream:
         schema:
           description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."

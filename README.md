@@ -15,6 +15,12 @@ View the Relay API specifications here:
 
 ## Contributing
 
+To clone the repository:
+
+```
+git submodule update --init --recursive
+```
+
 The API specification is checked for lint errors before merging pull requests.
 
 To run the linter locally, install it with:
