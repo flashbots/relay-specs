@@ -9,6 +9,8 @@ BidTraceV1:
       $ref: "../beacon-apis/types/primitive.yaml#/Root"
     builder_pubkey:
       $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
+    proposer_pubkey:
+      $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
     proposer_fee_recipient:
       $ref: "../beacon-apis/types/primitive.yaml#/ExecutionAddress"
     gas_limit:
