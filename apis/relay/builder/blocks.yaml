@@ -50,10 +50,6 @@ post:
   responses:
     "200":
       description: Success response.
-      content:
-        application/json:
-          schema:
-            $ref: "../../../relay-oapi.yaml#/components/schemas/SubmitBlockResponse"
     "400":
       description: Error response.
       content:

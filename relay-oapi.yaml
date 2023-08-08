@@ -57,8 +57,6 @@ components:
       $ref: "./types/deneb/requests.yaml#/Deneb/SubmitBlockRequest"
     ValidatorsResponse:
       $ref: "./types/responses.yaml#/ValidatorsResponse"
-    SubmitBlockResponse:
-      $ref: "./types/responses.yaml#/SubmitBlockResponse"
     DeliveredPayloadsResponse:
       $ref: "./types/responses.yaml#/DeliveredPayloadsResponse"
     ReceivedBlocksResponse:
