@@ -83,8 +83,13 @@ class ProposerDutiesResponseData(Container):
 
 ```python
 class BuilderSubmitNewBlockRequest(Container):
-    capella: SubmitBlockRequest
+    deneb: SubmitBlockRequest
 ```
+
+#### `BlobsBundle`
+
+Same as [`BlobsBundle`](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/validator.md#blobsbundle) in Deneb consensus specs.
+
 
 #### `SubmitBlockRequest`
 
@@ -92,6 +97,7 @@ class BuilderSubmitNewBlockRequest(Container):
 class SubmitBlockRequest(Container):
     message: BidTrace
     execution_payload: ExecutionPayload 
+    blobs_bundle: BlobsBundle
     signature: BLSSignature
 ```
 
@@ -112,25 +118,29 @@ class BidTrace(Container):
 
 #### `ExecutionPayload` 
 
-From [capella spec](https://github.com/ethereum/consensus-specs/blob/f7352d18cfb91c58b1addb4ea509aedd6e32165c/specs/capella/beacon-chain.md#executionpayload).
+From [deneb spec](https://github.com/ethereum/consensus-specs/blob/dev/specs/deneb/beacon-chain.md#executionpayload).
 
 ```python
 class ExecutionPayload(Container):
+    # Execution block header fields
     parent_hash: Hash32
-    fee_recipient: ExecutionAddress
+    fee_recipient: ExecutionAddress  # 'beneficiary' in the yellow paper
     state_root: Bytes32
     receipts_root: Bytes32
     logs_bloom: ByteVector[BYTES_PER_LOGS_BLOOM]
-    prev_randao: Bytes32
-    block_number: uint64
+    prev_randao: Bytes32  # 'difficulty' in the yellow paper
+    block_number: uint64  # 'number' in the yellow paper
     gas_limit: uint64
     gas_used: uint64
     timestamp: uint64
     extra_data: ByteList[MAX_EXTRA_DATA_BYTES]
     base_fee_per_gas: uint256
-    block_hash: Hash32 
+    # Extra payload fields
+    block_hash: Hash32  # Hash of execution block
     transactions: List[Transaction, MAX_TRANSACTIONS_PER_PAYLOAD]
-    withdrawals: List[Withdrawal, MAX_WITHDRAWALS_PER_PAYLOAD] 
+    withdrawals: List[Withdrawal, MAX_WITHDRAWALS_PER_PAYLOAD]
+    blob_gas_used: uint64  # [New in Deneb:EIP4844]
+    excess_blob_gas: uint64  # [New in Deneb:EIP4844]
 ```
 
 #### `Withdrawal`
