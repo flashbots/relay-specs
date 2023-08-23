@@ -7,22 +7,27 @@
 
 - [Introduction](#introduction)
 - [Notation](#notation)
-- [Custom Types](#custom-types)
+- [Custom types](#custom-types)
 - [Constants](#constants)
 - [Containers](#containers)
-
+  - [`​POST /relay​/v1​/builder​/blocks` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`BuilderSubmitNewBlockRequest`](#buildersubmitnewblockrequest)
+    - [`SubmitBlockRequest`](#submitblockrequest)
+    - [`BidTrace`](#bidtrace)
+    - [`ExecutionPayload`](#executionpayload)
+    - [`Withdrawal`](#withdrawal)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- /TOC -->
 
 ## Introduction
 
-This document presents the `mev-boost` relay specification. 
+This document presents the `mev-boost` relay specification
 
 [`mev-boost`](https://boost.flashbots.net/) is an out-of-protocol mechanism to
 connect Ethereum Proof-of-Stake validators to the external block-building market.
 The [validator-side](https://github.com/flashbots/mev-boost) API is specified 
-in the [builder specs](https://github.com/ethereum/builder-specs). The [relay-side](https://github.com/flashbots/mev-boost-relay) API is specified here in the relay specs. 
+in the [builder specs](https://github.com/ethereum/builder-specs). The [relay-side](https://github.com/flashbots/mev-boost-relay) API is specified here in the relay specs.
 
 ## Notation
 
@@ -61,23 +66,8 @@ The following values are (non-configurable) constants used throughout the specif
 
 ## Containers
 
-*Note*: Fields missing in container instantiations default to their zero value.
+### `​POST /relay​/v1​/builder​/blocks` request type 
 
-#### `ProposerDutiesResponse`
-
-```python
-class ProposerDutiesResponse(Container):
-    data: List[ProposerDutiesResponseData]
-```
-
-#### `ProposerDutiesResponseData`
-
-```python
-class ProposerDutiesResponseData(Container):
-    slot: Slot
-    pubkey: BLSPubkey
-    validator_index: ValidatorIndex
-```
 
 #### `BuilderSubmitNewBlockRequest`
 

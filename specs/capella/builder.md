@@ -7,10 +7,20 @@
 
 - [Introduction](#introduction)
 - [Notation](#notation)
-- [Custom Types](#custom-types)
+- [Custom types](#custom-types)
 - [Constants](#constants)
 - [Containers](#containers)
-
+  - [`​GET /relay​/v1​/builder​/validators` response type](#%E2%80%8Bget-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bvalidators-response-type)
+    - [`ProposerDutiesResponse`](#proposerdutiesresponse)
+    - [`BuilderGetValidatorsResponseEntry`](#buildergetvalidatorsresponseentry)
+    - [`SignedValidatorRegistration`](#signedvalidatorregistration)
+    - [`RegisterValidatorRequestMessage`](#registervalidatorrequestmessage)
+  - [`​POST /relay​/v1​/builder​/blocks` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`BuilderSubmitNewBlockRequest`](#buildersubmitnewblockrequest)
+    - [`SubmitBlockRequest`](#submitblockrequest)
+    - [`BidTrace`](#bidtrace)
+    - [`ExecutionPayload`](#executionpayload)
+    - [`Withdrawal`](#withdrawal)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- /TOC -->
@@ -63,21 +73,43 @@ The following values are (non-configurable) constants used throughout the specif
 
 *Note*: Fields missing in container instantiations default to their zero value.
 
+### `​GET /relay​/v1​/builder​/validators` response type 
+
 #### `ProposerDutiesResponse`
 
 ```python
 class ProposerDutiesResponse(Container):
-    data: List[ProposerDutiesResponseData]
+    data: List[BuilderGetValidatorsResponseEntry]
 ```
 
-#### `ProposerDutiesResponseData`
+#### `BuilderGetValidatorsResponseEntry`
 
 ```python
-class ProposerDutiesResponseData(Container):
+class BuilderGetValidatorsResponseEntry(Container):
     slot: Slot
-    pubkey: BLSPubkey
     validator_index: ValidatorIndex
+    entry: SignedValidatorRegistration
 ```
+
+#### `SignedValidatorRegistration`
+
+```python
+class SignedValidatorRegistration(Container):
+    message: RegisterValidatorRequestMessage
+    signature: BLSSignature
+```
+
+#### `RegisterValidatorRequestMessage`
+
+```python
+class RegisterValidatorRequestMessage(Container):
+    fee_recipient: ExecutionAddress
+    gas_limit: uint64
+    timestamp: uint64
+    pubkey: BLSPubkey
+```
+
+### `​POST /relay​/v1​/builder​/blocks` request type 
 
 #### `BuilderSubmitNewBlockRequest`
 
