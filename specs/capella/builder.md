@@ -20,7 +20,12 @@
     - [`SubmitBlockRequest`](#submitblockrequest)
     - [`BidTrace`](#bidtrace)
     - [`ExecutionPayload`](#executionpayload)
-    - [`Withdrawal`](#withdrawal)
+  - [`​GET /relay​/v1​/data​/bidtraces/builder_blocks_received` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`BuilderBlockReceivedResponse](#builderblockreceived)
+  - [`​GET /relay​/v1​/data​/bidtraces/proposer_payload_delivered` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`ProposerPayloadDeliveredResponse`](#proposerpayloaddeliveredResponse)
+  - [`​GET /relay​/v1​/data​/validator_registration` request type](#%E2%80%8Bpost-relay%E2%80%8Bv1%E2%80%8Bbuilder%E2%80%8Bblocks-request-type)
+    - [`ValidatorRegistrationResponse`](#validatorregistrationresponse)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- /TOC -->
@@ -175,4 +180,59 @@ class Withdrawal(Container):
     validator_index: ValidatorIndex
     address: ExecutionAddress
     amount: Gwei
+```
+
+### `​GET /relay​/v1​/data​/bidtraces/builder_blocks_received` response type 
+
+#### `BuilderBlocksReceivedResponse`
+
+```python
+class BuilderBlocksReceivedResponse(Container):
+    slot: Slot
+    parent_hash: Hash32
+    block_hash: Hash32
+    builder_pubkey: BLSPubkey
+    proposer_pubkey: BLSPubkey
+    proposer_fee_recipient: ExecutionAddress
+    gas_limit: uint64
+    gas_used: uint64
+    value: uint256
+    block_number: uint64
+    num_tx: uint64
+    timestamp: uint64
+    timestamp_ms: uint64
+```
+
+### `​GET /relay​/v1​/data​/bidtraces/proposer_payload_delivered` response type 
+
+#### `PropserPayloadDeliveredResponse`
+
+```python
+class PropserPayloadDeliveredResponse(Container):
+    slot: Slot
+    parent_hash: Hash32
+    block_hash: Hash32
+    builder_pubkey: BLSPubkey
+    proposer_pubkey: BLSPubkey
+    proposer_fee_recipient: ExecutionAddress
+    gas_limit: uint64
+    gas_used: uint64
+    value: uint256
+    block_number: uint64
+    num_tx: uint64
+```
+
+
+### `​GET /relay​/v1​/data​/validator_registration` response type 
+
+#### `ValidatorRegistrationResponse`
+
+```python
+class ValidatorRegistrationResponse(Container):
+    slot: uint64
+    validator_index: uint64
+    fee_recipient: ExecutionAddress
+    gas_limit: uint64
+    timestamp: uint64
+    pubkey: BLSPubkey
 ```
