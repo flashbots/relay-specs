@@ -7,6 +7,9 @@ post:
       content type should be `application/json`. If SSZ, the content type should
       be `application/octet-stream`.
     
+    * To enable GZIP compression for the request body, the preference is to 
+    support the optional header `Content-Encoding` with a single allowed value `gzip`.
+    
     * The relay will simulate the block to verify properties and proposer
       payment in the payment transaction from builder to proposer
       `fee_recipient` at the end of block.
@@ -47,6 +50,8 @@ post:
       application/octet-stream:
         schema:
           description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
+        encoding:
+          Content-Encoding: gzip
   responses:
     "200":
       description: Success response.
