@@ -40,8 +40,6 @@ post:
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Bellatrix.SubmitBlockRequest"
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Capella.SubmitBlockRequest"
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Deneb.SubmitBlockRequest"
-          encoding:
-            contentEncoding: gzip
         examples:
           bellatrix:
             $ref: "../../../relay-oapi.yaml#/components/examples/Bellatrix.SubmitBlockRequest"
@@ -52,8 +50,6 @@ post:
       application/octet-stream:
         schema:
           description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
-        encoding:
-          contentEncoding: gzip
   responses:
     "200":
       description: Success response.
