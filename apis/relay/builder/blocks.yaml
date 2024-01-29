@@ -7,6 +7,9 @@ post:
       content type should be `application/json`. If SSZ, the content type should
       be `application/octet-stream`.
     
+    * To enable GZIP compression for the request body, the HTTP content encoding 
+      should be `gzip`. Compression is optional.
+    
     * The relay will simulate the block to verify properties and proposer
       payment in the payment transaction from builder to proposer
       `fee_recipient` at the end of block.
