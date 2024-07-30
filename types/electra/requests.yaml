@@ -1,0 +1,5 @@
+Electra:
+  SubmitBlockRequest:
+    allOf:
+      - $ref: '../bellatrix/requests.yaml#/Bellatrix/SubmitBlockRequestCommon'
+      - $ref: "../../builder-specs/types/electra/execution_payload_and_blobs_bundle.yaml#/Electra/ExecutionPayloadAndBlobsBundle"
