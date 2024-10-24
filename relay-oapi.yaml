@@ -55,6 +55,8 @@ components:
       $ref: "./types/capella/requests.yaml#/Capella/SubmitBlockRequest"
     Deneb.SubmitBlockRequest:
       $ref: "./types/deneb/requests.yaml#/Deneb/SubmitBlockRequest"
+    Electra.SubmitBlockRequest:
+      $ref: "./types/electra/requests.yaml#/Electra/SubmitBlockRequest"
     ValidatorsResponse:
       $ref: "./types/responses.yaml#/ValidatorsResponse"
     DeliveredPayloadsResponse:
@@ -73,3 +75,5 @@ components:
       $ref: "./examples/capella/submit_block_request.json"
     Deneb.SubmitBlockRequest:
       $ref: "./examples/deneb/submit_block_request.json"
+    Electra.SubmitBlockRequest:
+      $ref: "./examples/electra/submit_block_request.json"

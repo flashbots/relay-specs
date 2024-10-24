@@ -2,4 +2,5 @@ Electra:
   SubmitBlockRequest:
     allOf:
       - $ref: '../bellatrix/requests.yaml#/Bellatrix/SubmitBlockRequestCommon'
-      - $ref: "../../builder-specs/types/electra/execution_payload_and_blobs_bundle.yaml#/Electra/ExecutionPayloadAndBlobsBundle"
+      - $ref: "../../builder-specs/types/deneb/execution_payload_and_blobs_bundle.yaml#/Deneb/ExecutionPayloadAndBlobsBundle"
+      - $ref: "../../beacon-apis/types/electra/execution_requests.yaml#/Electra/ExecutionRequests"
