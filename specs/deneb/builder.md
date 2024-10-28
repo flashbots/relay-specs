@@ -47,29 +47,7 @@ specification.
 
 ## Containers
 
-#### Modified `BidTrace`
-
-*Note*: `BidTrace` is modified to include blob count and blob gas fields.
-
-```python
-class BidTrace(Container):
-    slot: Slot
-    parent_hash: Hash32
-    block_hash: Hash32
-    builder_pubkey: BLSPubkey
-    proposer_pubkey: BLSPubkey
-    proposer_fee_recipient: ExecutionAddress
-    gas_limit: uint64
-    gas_used: uint64
-    value: uint256
-    num_tx: uint64
-    block_number: uint64
-    num_blobs: uint64
-    blob_gas_used: uint64
-    excess_blob_gas: uint64
-```
-
-#### Modified `ExecutionPayload` 
+#### Modified `ExecutionPayload`
 
 *Note*: `ExecutionPayload` is modified to include blob gas fields.
 
@@ -87,7 +65,7 @@ class ExecutionPayload(Container):
     timestamp: uint64
     extra_data: ByteList[MAX_EXTRA_DATA_BYTES]
     base_fee_per_gas: uint256
-    block_hash: Hash32 
+    block_hash: Hash32
     transactions: List[Transaction, MAX_TRANSACTIONS_PER_PAYLOAD]
     withdrawals: List[Withdrawal, MAX_WITHDRAWALS_PER_PAYLOAD]
     blob_gas_used: uint64

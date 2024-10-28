@@ -16,7 +16,7 @@
 
 ## Introduction
 
-This document presents the `mev-boost` relay specification for Bellatrix. 
+This document presents the `mev-boost` relay specification for Bellatrix.
 
 [`mev-boost`](https://boost.flashbots.net/) is an out-of-protocol mechanism to
 connect Ethereum Proof-of-Stake validators to the external block-building
@@ -84,11 +84,9 @@ class BidTrace(Container):
     gas_limit: uint64
     gas_used: uint64
     value: uint256
-    num_tx: uint64
-    block_number: uint64
 ```
 
-#### New `ExecutionPayload` 
+#### New `ExecutionPayload`
 
 ```python
 class ExecutionPayload(Container):
@@ -104,7 +102,7 @@ class ExecutionPayload(Container):
     timestamp: uint64
     extra_data: ByteList[MAX_EXTRA_DATA_BYTES]
     base_fee_per_gas: uint256
-    block_hash: Hash32 
+    block_hash: Hash32
     transactions: List[Transaction, MAX_TRANSACTIONS_PER_PAYLOAD]
 ```
 
@@ -113,7 +111,7 @@ class ExecutionPayload(Container):
 ```python
 class SubmitBlockRequest(Container):
     message: BidTrace
-    execution_payload: ExecutionPayload 
+    execution_payload: ExecutionPayload
     signature: BLSSignature
 ```
 
