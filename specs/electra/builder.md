@@ -31,11 +31,22 @@ specification.
 
 | Name | Value |
 | - | - |
-| `MAX_DEPOSIT_REQUESTS_PER_PAYLOAD` | `uint64(2**13)` (= 8,192) | Maximum number of deposit receipts allowed in each payload |
+| `MAX_DEPOSIT_REQUESTS_PER_PAYLOAD` | `uint64(2**13)` (= 8,192) | Maximum number of execution layer deposit requests in each payload |
 | `MAX_WITHDRAWAL_REQUESTS_PER_PAYLOAD` | `uint64(2**4)` (= 16)| Maximum number of execution layer withdrawal requests in each payload |
 | `MAX_CONSOLIDATION_REQUESTS_PER_PAYLOAD` | `uint64(1)` (= 1) | Maximum number of execution layer consolidation requests in each payload |
 
 ## Containers
+
+#### New `DepositRequest`
+
+```python
+class DepositRequest(Container):
+    pubkey: BLSPubkey
+    withdrawal_credentials: Bytes32
+    amount: Gwei
+    signature: BLSSignature
+    index: uint64
+```
 
 #### New `WithdrawalRequest`
 
@@ -53,14 +64,6 @@ class ConsolidationRequest(Container):
     source_address: ExecutionAddress
     source_pubkey: BLSPubkey
     target_pubkey: BLSPubkey
-```
-
-#### New `PendingConsolidation`
-
-```python
-class PendingConsolidation(Container):
-    source_index: ValidatorIndex
-    target_index: ValidatorIndex
 ```
 
 #### New `ExecutionRequests`
