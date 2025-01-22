@@ -77,13 +77,13 @@ paths:
                               example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                               pattern: '^0x[a-fA-F0-9]{40}$'
                             gas_limit:
+                              type: string
+                              example: '1'
                               description: Preferred gas limit of validator.
-                              type: string
-                              example: '1'
                             timestamp:
-                              description: Unix timestamp of registration.
                               type: string
                               example: '1'
+                              description: Unix timestamp of registration.
                             pubkey:
                               description: BLS public key of validator.
                               type: string
@@ -432,17 +432,17 @@ paths:
                                       - amount
                                     properties:
                                       index:
+                                        type: string
+                                        example: '1'
                                         description: The index of the withdrawal.
-                                        type: string
-                                        example: '1'
                                       validator_index:
-                                        description: The index of the withdrawing validator.
                                         type: string
                                         example: '1'
+                                        description: The index of the withdrawing validator.
                                       address:
-                                        description: The address to which the withdrawal is credited.
                                         type: string
                                         format: hex
+                                        description: An address on the execution (Ethereum 1) network.
                                         example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                                         pattern: '^0x[a-fA-F0-9]{40}$'
                                       amount:
@@ -612,17 +612,17 @@ paths:
                                       - amount
                                     properties:
                                       index:
+                                        type: string
+                                        example: '1'
                                         description: The index of the withdrawal.
-                                        type: string
-                                        example: '1'
                                       validator_index:
-                                        description: The index of the withdrawing validator.
                                         type: string
                                         example: '1'
+                                        description: The index of the withdrawing validator.
                                       address:
-                                        description: The address to which the withdrawal is credited.
                                         type: string
                                         format: hex
+                                        description: An address on the execution (Ethereum 1) network.
                                         example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                                         pattern: '^0x[a-fA-F0-9]{40}$'
                                       amount:
@@ -828,17 +828,17 @@ paths:
                                       - amount
                                     properties:
                                       index:
+                                        type: string
+                                        example: '1'
                                         description: The index of the withdrawal.
-                                        type: string
-                                        example: '1'
                                       validator_index:
-                                        description: The index of the withdrawing validator.
                                         type: string
                                         example: '1'
+                                        description: The index of the withdrawing validator.
                                       address:
-                                        description: The address to which the withdrawal is credited.
                                         type: string
                                         format: hex
+                                        description: An address on the execution (Ethereum 1) network.
                                         example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                                         pattern: '^0x[a-fA-F0-9]{40}$'
                                       amount:
@@ -902,17 +902,17 @@ paths:
                               - index
                             properties:
                               pubkey:
-                                description: BLS public key of validator.
                                 type: string
                                 format: hex
                                 pattern: '^0x[a-fA-F0-9]{96}$'
+                                description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                                 example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                               withdrawal_credentials:
-                                description: The withdrawal credentials.
                                 type: string
                                 format: hex
                                 example: '0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2'
                                 pattern: '^0x[a-fA-F0-9]{64}$'
+                                description: The withdrawal credentials.
                               amount:
                                 description: The value to be deposited (gwei).
                                 type: string
@@ -923,9 +923,9 @@ paths:
                                 pattern: '^0x[a-fA-F0-9]{192}$'
                                 example: '0x1b66ac1fb663c9bc59509846d6ec05345bd908eda73e670af888da41af171505cc411d61252fb6cb3fa0017b679f8bb2305b26a285fa2737f175668d0dff91cc1b66ac1fb663c9bc59509846d6ec05345bd908eda73e670af888da41af171505'
                               index:
-                                description: The index of the deposit request.
                                 type: string
                                 example: '1'
+                                description: The index of the deposit request.
                           maxItems: 8192
                         withdrawals:
                           type: array
@@ -938,16 +938,16 @@ paths:
                               - amount
                             properties:
                               source_address:
-                                description: Execution address which sent the request.
                                 type: string
                                 format: hex
+                                description: An address on the execution (Ethereum 1) network.
                                 example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                                 pattern: '^0x[a-fA-F0-9]{40}$'
                               validator_pubkey:
-                                description: BLS public key of validator.
                                 type: string
                                 format: hex
                                 pattern: '^0x[a-fA-F0-9]{96}$'
+                                description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                                 example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                               amount:
                                 description: The value to be withdrawn (gwei).
@@ -965,22 +965,22 @@ paths:
                               - target_pubkey
                             properties:
                               source_address:
-                                description: Execution address which sent the request.
                                 type: string
                                 format: hex
+                                description: An address on the execution (Ethereum 1) network.
                                 example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                                 pattern: '^0x[a-fA-F0-9]{40}$'
                               source_pubkey:
-                                description: BLS public key of validator to consolidate from.
                                 type: string
                                 format: hex
                                 pattern: '^0x[a-fA-F0-9]{96}$'
+                                description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                                 example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                               target_pubkey:
-                                description: BLS public key of validator to consolidate to.
                                 type: string
                                 format: hex
                                 pattern: '^0x[a-fA-F0-9]{96}$'
+                                description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                                 example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                           maxItems: 1
             examples:
@@ -1602,13 +1602,13 @@ paths:
                         example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                         pattern: '^0x[a-fA-F0-9]{40}$'
                       gas_limit:
+                        type: string
+                        example: '1'
                         description: Preferred gas limit of validator.
-                        type: string
-                        example: '1'
                       timestamp:
-                        description: Unix timestamp of registration.
                         type: string
                         example: '1'
+                        description: Unix timestamp of registration.
                       pubkey:
                         description: BLS public key of validator.
                         type: string
@@ -2009,17 +2009,17 @@ components:
                           - amount
                         properties:
                           index:
+                            type: string
+                            example: '1'
                             description: The index of the withdrawal.
-                            type: string
-                            example: '1'
                           validator_index:
-                            description: The index of the withdrawing validator.
                             type: string
                             example: '1'
+                            description: The index of the withdrawing validator.
                           address:
-                            description: The address to which the withdrawal is credited.
                             type: string
                             format: hex
+                            description: An address on the execution (Ethereum 1) network.
                             example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                             pattern: '^0x[a-fA-F0-9]{40}$'
                           amount:
@@ -2190,17 +2190,17 @@ components:
                           - amount
                         properties:
                           index:
+                            type: string
+                            example: '1'
                             description: The index of the withdrawal.
-                            type: string
-                            example: '1'
                           validator_index:
-                            description: The index of the withdrawing validator.
                             type: string
                             example: '1'
+                            description: The index of the withdrawing validator.
                           address:
-                            description: The address to which the withdrawal is credited.
                             type: string
                             format: hex
+                            description: An address on the execution (Ethereum 1) network.
                             example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                             pattern: '^0x[a-fA-F0-9]{40}$'
                           amount:
@@ -2407,17 +2407,17 @@ components:
                           - amount
                         properties:
                           index:
+                            type: string
+                            example: '1'
                             description: The index of the withdrawal.
-                            type: string
-                            example: '1'
                           validator_index:
-                            description: The index of the withdrawing validator.
                             type: string
                             example: '1'
+                            description: The index of the withdrawing validator.
                           address:
-                            description: The address to which the withdrawal is credited.
                             type: string
                             format: hex
+                            description: An address on the execution (Ethereum 1) network.
                             example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                             pattern: '^0x[a-fA-F0-9]{40}$'
                           amount:
@@ -2481,17 +2481,17 @@ components:
                   - index
                 properties:
                   pubkey:
-                    description: BLS public key of validator.
                     type: string
                     format: hex
                     pattern: '^0x[a-fA-F0-9]{96}$'
+                    description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                     example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                   withdrawal_credentials:
-                    description: The withdrawal credentials.
                     type: string
                     format: hex
                     example: '0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2'
                     pattern: '^0x[a-fA-F0-9]{64}$'
+                    description: The withdrawal credentials.
                   amount:
                     description: The value to be deposited (gwei).
                     type: string
@@ -2502,9 +2502,9 @@ components:
                     pattern: '^0x[a-fA-F0-9]{192}$'
                     example: '0x1b66ac1fb663c9bc59509846d6ec05345bd908eda73e670af888da41af171505cc411d61252fb6cb3fa0017b679f8bb2305b26a285fa2737f175668d0dff91cc1b66ac1fb663c9bc59509846d6ec05345bd908eda73e670af888da41af171505'
                   index:
-                    description: The index of the deposit request.
                     type: string
                     example: '1'
+                    description: The index of the deposit request.
               maxItems: 8192
             withdrawals:
               type: array
@@ -2517,16 +2517,16 @@ components:
                   - amount
                 properties:
                   source_address:
-                    description: Execution address which sent the request.
                     type: string
                     format: hex
+                    description: An address on the execution (Ethereum 1) network.
                     example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                     pattern: '^0x[a-fA-F0-9]{40}$'
                   validator_pubkey:
-                    description: BLS public key of validator.
                     type: string
                     format: hex
                     pattern: '^0x[a-fA-F0-9]{96}$'
+                    description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                     example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                   amount:
                     description: The value to be withdrawn (gwei).
@@ -2544,22 +2544,22 @@ components:
                   - target_pubkey
                 properties:
                   source_address:
-                    description: Execution address which sent the request.
                     type: string
                     format: hex
+                    description: An address on the execution (Ethereum 1) network.
                     example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                     pattern: '^0x[a-fA-F0-9]{40}$'
                   source_pubkey:
-                    description: BLS public key of validator to consolidate from.
                     type: string
                     format: hex
                     pattern: '^0x[a-fA-F0-9]{96}$'
+                    description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                     example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
                   target_pubkey:
-                    description: BLS public key of validator to consolidate to.
                     type: string
                     format: hex
                     pattern: '^0x[a-fA-F0-9]{96}$'
+                    description: 'The validator''s BLS public key, uniquely identifying them. _48-bytes, hex encoded with 0x prefix, case insensitive._'
                     example: '0x93247f2209abcacf57b75a51dafae777f9dd38bc7053d1af526f220a7489a6d3a2753e5f3e8b1cfe39b56f43611df74a'
               maxItems: 1
     ValidatorsResponse:
@@ -2596,13 +2596,13 @@ components:
                     example: '0xAbcF8e0d4e9587369b2301D0790347320302cc09'
                     pattern: '^0x[a-fA-F0-9]{40}$'
                   gas_limit:
+                    type: string
+                    example: '1'
                     description: Preferred gas limit of validator.
-                    type: string
-                    example: '1'
                   timestamp:
-                    description: Unix timestamp of registration.
                     type: string
                     example: '1'
+                    description: Unix timestamp of registration.
                   pubkey:
                     description: BLS public key of validator.
                     type: string
