@@ -62,14 +62,25 @@
           SwaggerUIBundle.plugins.DownloadUrl
         ],
         layout: "StandaloneLayout",
-        requestInterceptor: function() {
-          if(this.url.startsWith("http")) {
-            this.url = "https://api.allorigins.win/raw?url=" + this.url; // will change the URL used.
+        requestInterceptor: (req) => {
+          if (req.url.startsWith("http")) {
+            const encodedUrl = encodeURIComponent(req.url);
+            req.url = `https://api.allorigins.win/raw?url=${encodedUrl}`;
           }
-          return this;
+          return req;
+        },
+        responseInterceptor: (res) => {
+          return res;
+        },
+        onComplete: () => {
+          console.log("Swagger UI initialization completed");
         }
-   })
-      // End Swagger UI call region
+      });
+
+      // Error handling
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled promise rejection:', event.reason);
+      });
 
       window.ui = ui
     }
