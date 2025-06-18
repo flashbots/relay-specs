@@ -39,3 +39,23 @@ BidTraceV2WithTimestamp:
           $ref: "./misc.yaml#/Int64"
         timestamp_ms:
           $ref: "./misc.yaml#/Int64"
+
+HeaderTraceV1:
+  type: object
+  properties:
+    slot:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    parent_hash:
+      $ref: "../beacon-apis/types/primitive.yaml#/Root"
+    block_hash:
+      $ref: "../beacon-apis/types/primitive.yaml#/Root"
+    builder_pubkey:
+      $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
+    proposer_pubkey:
+      $ref: "../beacon-apis/types/primitive.yaml#/Pubkey"
+    proposer_fee_recipient:
+      $ref: "../beacon-apis/types/primitive.yaml#/ExecutionAddress"
+    value:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint256"
+    block_number:
+      $ref: "../beacon-apis/types/primitive.yaml#/Uint64"

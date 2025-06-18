@@ -22,3 +22,9 @@ ReceivedBlocksResponse:
   type: array
   items:
     $ref: "./bids.yaml#/BidTraceV2WithTimestamp"
+
+DeliveredHeadersResponse:
+  type: array
+  items:
+    $ref: "./bids.yaml#/HeaderTraceV1"
+

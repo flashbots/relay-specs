@@ -1,0 +1,77 @@
+get:
+  operationId: "getDeliveredHeaders"
+  summary: Get headers that were delivered to proposers.
+  description: |
+    * Headers become available after the relay responds to a `getHeader` request from the proposer.
+    
+    * Query arguments are used as filters.
+  tags:
+    - Data
+  parameters:
+    - name: slot
+      in: query
+      required: false
+      description: A specific slot.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: cursor
+      in: query
+      required: false
+      description: A starting slot for multiple results.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: limit
+      in: query
+      required: false
+      description: The number of results.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: block_hash
+      in: query
+      required: false
+      description: A specific block hash.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Root"
+    - name: block_number
+      in: query
+      required: false
+      description: A specific block number.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+    - name: proposer_pubkey
+      in: query
+      required: false
+      description: A specific proposer public key.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
+    - name: builder_pubkey
+      in: query
+      required: false
+      description: A specific builder public key.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Pubkey"
+    - name: order_by
+      in: query
+      required: false
+      description: Sort results in order of...
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/OrderBy"
+  responses:
+    "200":
+      description: Success response.
+      content:
+        application/json:
+          schema:
+            $ref: "../../../relay-oapi.yaml#/components/schemas/DeliveredHeadersResponse"
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "invalid block_hash argument"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"
