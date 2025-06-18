@@ -59,3 +59,15 @@ HeaderTraceV1:
       $ref: "../beacon-apis/types/primitive.yaml#/Uint256"
     block_number:
       $ref: "../beacon-apis/types/primitive.yaml#/Uint64"
+    value_eth:
+      type: string
+      description: The value in ETH of the block
+    date_milliseconds:
+      type: string
+      description: The getHeader request send time in milliseconds, parsed from the Date-Milliseconds header of the request.
+    extra_data:
+      type: string
+      description: builder extra data
+    header_request_id:
+      type: string
+      description: The request ID of the getHeader request, parsed from the X-MEVBoost-SlotID header of the request.
