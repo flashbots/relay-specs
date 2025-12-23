@@ -41,6 +41,7 @@ post:
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Capella.SubmitBlockRequest"
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Deneb.SubmitBlockRequest"
             - $ref: "../../../relay-oapi.yaml#/components/schemas/Electra.SubmitBlockRequest"
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Fulu.SubmitBlockRequest"
         examples:
           bellatrix:
             $ref: "../../../relay-oapi.yaml#/components/examples/Bellatrix.SubmitBlockRequest"
@@ -50,6 +51,8 @@ post:
             $ref: "../../../relay-oapi.yaml#/components/examples/Deneb.SubmitBlockRequest"
           electra:
             $ref: "../../../relay-oapi.yaml#/components/examples/Electra.SubmitBlockRequest"
+          fulu:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Fulu.SubmitBlockRequest"
       application/octet-stream:
         schema:
           description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
