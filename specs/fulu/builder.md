@@ -11,6 +11,15 @@ specified in the [builder specs](https://github.com/ethereum/builder-specs). The
 [relay-side](https://github.com/flashbots/mev-boost-relay) API is specified here
 in the relay specs.
 
+## Constants
+
+The following values are (non-configurable) constants used throughout the
+specification.
+
+| Name | Value |
+| - | - |
+| `FIELD_ELEMENTS_PER_EXT_BLOB` | `uint64(2**13)` (= 8192)| Number of field elements in a Reed-Solomon extended blob |
+
 
 ## Containers
 
