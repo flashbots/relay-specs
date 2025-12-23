@@ -34,3 +34,4 @@ wei
 deneb
 kzg
 electra
+fulu
