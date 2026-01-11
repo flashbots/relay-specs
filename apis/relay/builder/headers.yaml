@@ -1,0 +1,66 @@
+post:
+  operationId: "submitHeader"
+  summary: Submit optimistic header to the relay.
+  description: |
+    * Headers can be submitted as JSON or SSZ, and optionally GZIP encoded. To be
+      clear, there are four options: JSON, JSON+GZIP, SSZ, SSZ+GZIP. If JSON, the
+      content type should be `application/json`. If SSZ, the content type should
+      be `application/octet-stream`.
+    
+    * To enable GZIP compression for the request body, the HTTP content encoding 
+      should be `gzip`. Compression is optional.
+    
+    * The relay will check that the builder has enough collateral to cover the 
+      value of the bid. Otherwise the relay will not accept the optimistic header.
+
+    * The relay will need the rest of payload via the optimistic v2 endpoint. If 
+      not received in time, the relay will penalize the builder's collateral.
+    
+    * For accountability, builder signature is over the SSZ encoded `message`.
+    
+    * The `message`, which does not include the transactions, will be made
+      public via the data API, allowing anyone to verify the builder signature.
+  tags:
+    - Builder
+  parameters:
+    - name: cancellations
+      in: query
+      required: false
+      description: If set to 1, opt into bid cancellations.
+      schema:
+        $ref: "../../../relay-oapi.yaml#/components/schemas/Uint64"
+  requestBody:
+    description: A signed bid with an execution header.
+    required: true
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Bellatrix.SubmitHeaderRequest"
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Capella.SubmitHeaderRequest"
+            - $ref: "../../../relay-oapi.yaml#/components/schemas/Deneb.SubmitHeaderRequest"
+        examples:
+          bellatrix:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Bellatrix.SubmitHeaderRequest"
+          capella:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Capella.SubmitHeaderRequest"
+          deneb:
+            $ref: "../../../relay-oapi.yaml#/components/examples/Deneb.SubmitHeaderRequest"
+      application/octet-stream:
+        schema:
+          description: "SSZ serialized request. Use content type header to indicate that SSZ data is contained in the request body."
+  responses:
+    "200":
+      description: Success response.
+    "400":
+      description: Error response.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../../../relay-oapi.yaml#/components/schemas/ErrorMessage"
+              - example:
+                  code: 400
+                  message: "payload for this slot was already delivered"
+    "500":
+      $ref: "../../../relay-oapi.yaml#/components/responses/InternalError"

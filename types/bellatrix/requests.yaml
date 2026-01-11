@@ -14,3 +14,11 @@ Bellatrix:
         properties:
           execution_payload:
             $ref: "../../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayload"
+  
+  SubmitHeaderRequest:
+    allOf:
+      - $ref: '#/Bellatrix/SubmitBlockRequestCommon'
+      - type: object
+        properties:
+          header:
+            $ref: "../../beacon-apis/types/bellatrix/execution_payload.yaml#/Bellatrix/ExecutionPayloadHeader"

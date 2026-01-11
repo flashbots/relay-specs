@@ -3,3 +3,17 @@ Deneb:
     allOf:
       - $ref: '../bellatrix/requests.yaml#/Bellatrix/SubmitBlockRequestCommon'
       - $ref: "../../builder-specs/types/deneb/execution_payload_and_blobs_bundle.yaml#/Deneb/ExecutionPayloadAndBlobsBundle"
+
+  SubmitHeaderRequest:
+    allOf:
+      - $ref: '#/Bellatrix/SubmitBlockRequestCommon'
+      - type: object
+        properties:
+          header:
+            $ref: "../../beacon-apis/types/bellatrix/execution_payload.yaml#/Deneb/ExecutionPayloadHeader"
+          blob_kzg_commitments:
+            type: array
+            items:
+              $ref: '../../beacon-apis/types/primitive.yaml#/KZGCommitment'
+            minItems: 0
+            maxItems: 4096

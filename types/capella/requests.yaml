@@ -6,3 +6,11 @@ Capella:
         properties:
           execution_payload:
             $ref: "../../beacon-apis/types/capella/execution_payload.yaml#/Capella/ExecutionPayload"
+
+  SubmitHeaderRequest:
+    allOf:
+      - $ref: '#/Bellatrix/SubmitBlockRequestCommon'
+      - type: object
+        properties:
+          header:
+            $ref: "../../beacon-apis/types/bellatrix/execution_payload.yaml#/Capella/ExecutionPayloadHeader"
