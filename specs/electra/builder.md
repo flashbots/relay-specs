@@ -33,7 +33,7 @@ specification.
 | - | - |
 | `MAX_DEPOSIT_REQUESTS_PER_PAYLOAD` | `uint64(2**13)` (= 8,192) | Maximum number of execution layer deposit requests in each payload |
 | `MAX_WITHDRAWAL_REQUESTS_PER_PAYLOAD` | `uint64(2**4)` (= 16)| Maximum number of execution layer withdrawal requests in each payload |
-| `MAX_CONSOLIDATION_REQUESTS_PER_PAYLOAD` | `uint64(1)` (= 1) | Maximum number of execution layer consolidation requests in each payload |
+| `MAX_CONSOLIDATION_REQUESTS_PER_PAYLOAD` | `uint64(2**1)` (= 2) | Maximum number of execution layer consolidation requests in each payload |
 
 ## Containers
 
