@@ -49,7 +49,7 @@ class SubmitBlockRequest(Container):
 
 #### Modified `BuilderSubmitNewBlockRequest`
 
-*Note*: `BuilderSubmitNewBlockRequest` is modified by replacing the `bellatrix`
+*Note*: `BuilderSubmitNewBlockRequest` is modified by replacing the `electra`
 field with a new `fulu` field.
 
 ```python
