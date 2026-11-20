@@ -16,8 +16,8 @@ in the relay specs.
 The following values are (non-configurable) constants used throughout the
 specification.
 
-| Name | Value |
-| - | - |
+| Name | Value | Description |
+| - | - | - |
 | `FIELD_ELEMENTS_PER_EXT_BLOB` | `uint64(2**13)` (= 8192)| Number of field elements in a Reed-Solomon extended blob |
 
 
