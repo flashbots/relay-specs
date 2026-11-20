@@ -14,7 +14,9 @@ post:
       payment in the payment transaction from builder to proposer
       `fee_recipient` at the end of block.
     
-    * For accountability, builder signature is over the SSZ encoded `message`.
+    * For accountability, the builder signs `message` with the signing root
+      `compute_signing_root(message, compute_domain(DOMAIN_APPLICATION_BUILDER))`
+      of the builder specs.
     
     * The `message`, which does not include the transactions, will be made
       public via the data API, allowing anyone to verify the builder signature.
