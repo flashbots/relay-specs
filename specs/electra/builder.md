@@ -88,20 +88,6 @@ class SubmitBlockRequest(Container):
     signature: BLSSignature
 ```
 
-#### Modified `SubmitBlockRequest`
-
-*Note*: `SubmitBlockRequest` is modified to the modified `ExecutionPayload` and
-the new `BlobsBundle`.
-
-```python
-class SubmitBlockRequest(Container):
-    message: BidTrace
-    execution_payload: ExecutionPayload
-    blobs_bundle: BlobsBundle
-    execution_requests: ExecutionRequests
-    signature: BLSSignature
-```
-
 #### Modified `BuilderSubmitNewBlockRequest`
 
 *Note*: `BuilderSubmitNewBlockRequest` is modified by replacing the `deneb`
